@@ -6,15 +6,11 @@
 A performant, secure, and bulk-safe bundle of 2 Use cases solved in salesforce.
 ---------------------------------------------
 
-A performant, secure, and bulk-safe bundle of 2 Use Cases solved in Salesforce.
-
----------------------------------------------
-
 ## 1. Setup & Deployment Steps
 
 Ensure your org has:
 
-An External Credential (ensure also it has a principal added).
+1.- An External Credential (ensure also it has a principal added).
 
 Label: Zippopotam_API
 
@@ -22,10 +18,16 @@ Name: Zippopotam_API
 
 Authentication Protocol: No Authentication
 
-Named Credential
+2.- Named Credential.
+
 Label: Zippopotam_API
+
 Name: Zippopotam_API
+
 URL:https://api.zippopotam.us
+
+External Credential: Zippopotam_API (created in previous step).
+
 
 
 ```bash
