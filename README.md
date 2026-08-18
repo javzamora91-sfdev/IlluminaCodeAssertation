@@ -30,6 +30,8 @@ External Credential: Zippopotam_API (created in previous step).
 
 3.- Create a permission set and grant in External Credential Principal Access the principal name you created in step 1.
 
+Now check the following:
+
 
 
 ```bash
