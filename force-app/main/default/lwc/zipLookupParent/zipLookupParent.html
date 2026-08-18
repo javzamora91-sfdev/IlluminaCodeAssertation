@@ -1,0 +1,61 @@
+<template>
+    <lightning-card title="Zip Code Lookup" icon-name="standard:address">
+        <div class="slds-m-around_medium">
+            <div class="slds-grid slds-gutters slds-wrap">
+                <!-- Country Selection Picklist -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                    <lightning-combobox name="country" label="Country" value={selectedCountryOption}
+                        options={countryOptions} onchange={handleCountryOptionChange}>
+                    </lightning-combobox>
+                </div>
+
+                <!-- Custom Country Code Input (Shown only when 'OTHER' is selected) -->
+                <template if:true={isCustomCountry}>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                        <lightning-input type="text" label="2-Letter Country Code" value={customCountryCode}
+                            placeholder="e.g. FR, GB, JP" max-length="2" onchange={handleCustomCountryChange}>
+                        </lightning-input>
+                    </div>
+                </template>
+
+                <!-- Zip Code Input -->
+                <div class={zipColumnClass}>
+                    <lightning-input type="text" label="Enter Zip Code" value={zipCode} onchange={handleZipChange}>
+                    </lightning-input>
+                </div>
+            </div>
+            <template if:true={errorMessage}>
+                <div class="slds-notify slds-notify_alert slds-alert_error slds-m-top_medium" role="alert">
+                    <lightning-icon icon-name="utility:error" variant="inverse" size="x-small"
+                        class="slds-m-right_x-small"></lightning-icon>
+                    <h2>{errorMessage}</h2>
+                </div>
+            </template>
+            <lightning-button label="Search" variant="brand" onclick={handleSearch} class="slds-m-top_small"
+                is-loading={isLoading}>
+            </lightning-button>
+
+            <!-- US Display Child Component -->
+            <template if:true={isUS}>
+                <c-zip-details-display zip-data={zipData}></c-zip-details-display>
+            </template>
+
+            <!-- Non-US Notification -->
+            <template if:true={isNonUS}>
+                <div class="slds-scoped-notification slds-media slds-media_center slds-theme_info slds-m-top_medium">
+                    <div class="slds-media__body">
+                        <p>Non-US Zip Code processed successfully and saved to non-US logs.</p>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+
+    <!-- Non-US Data View Screen -->
+    <lightning-card title="Non-US Logged Searches" icon-name="custom:custom62" class="slds-m-top_medium">
+        <div class="slds-m-around_medium">
+            <lightning-datatable key-field="Id" data={logs} columns={logColumns} hide-checkbox-column>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

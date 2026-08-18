@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-box slds-m-top_medium slds-theme_default">
+        <h3 class="slds-text-heading_small slds-m-bottom_small">US Zip Code Details</h3>
+        <p><strong>Post Code:</strong> {zipData.postCode}</p>
+        <p><strong>Country:</strong> {zipData.country} ({zipData.countryAbbreviation})</p>
+
+        <h4 class="slds-text-title_caps slds-m-top_small">Places:</h4>
+        <ul>
+            <template for:each={zipData.places} for:item="place">
+                <li key={place.placeName}>
+                    {place.placeName}, {place.state} ({place.stateAbbreviation}) - Lat: {place.latitude}, Long:
+                    {place.longitude}
+                </li>
+            </template>
+        </ul>
+    </div>
+</template>
