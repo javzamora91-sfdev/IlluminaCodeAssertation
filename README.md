@@ -14,9 +14,12 @@ A performant, secure, and bulk-safe bundle of 2 Use Cases solved in Salesforce.
 
 Ensure your org has:
 
-An External Credential (ensure also it has a principal added)
+An External Credential (ensure also it has a principal added).
+
 Label: Zippopotam_API
+
 Name: Zippopotam_API
+
 Authentication Protocol: No Authentication
 
 Named Credential
